@@ -1,6 +1,6 @@
 :allow_comments: False
 
-Tài liệu Godot – nhánh *master*
+Tài liệu Godot – nhánh *stable*
 ===============================
 
 .. only:: not i18n
